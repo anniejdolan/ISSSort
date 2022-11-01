@@ -226,9 +226,11 @@ private:
 	// Array variables
 	std::vector<float>		pen_list;	///< list of p-side energies for ParticleFinder
 	std::vector<float>		nen_list;	///< list of n-side energies for ParticleFinder
-	std::vector<long>		ptd_list;	///< list of p-side time differences for ParticleFinder
-	std::vector<long>		ntd_list;	///< list of n-side time differences for ParticleFinder
-	std::vector<int>		pid_list;	///< list of p-side strip ids
+    std::vector<long>        ptd_list;    ///< list of p-side time differences for ParticleFinder without time walk correction
+    std::vector<long>        ntd_list;    ///< list of n-side time differences for ParticleFinder without time walk correction
+    std::vector<long>       pwalk_list; ///< list of p-side time differences for ParticleFinder WITH time walk correction
+    std::vector<long>       nwalk_list; ///< list of n-side time differences for ParticleFinder WITH time walk correction
+    std::vector<int>		pid_list;	///< list of p-side strip ids
 	std::vector<int>		nid_list;	///< list of n-side strip ids
 	std::vector<int>		pmod_list;	///< list of p-side modules numbers
 	std::vector<int>		nmod_list;	///< list of n-side modules numbers
@@ -288,9 +290,12 @@ private:
 	std::vector<std::vector<TH2F*>> pn_max;		///< Vector of vector of 2D histograms with p and n-side max energy
 	std::vector<std::vector<TH1F*>> pn_td;		///< Vector of vector of 1D histograms with p vs n side time difference
 	std::vector<std::vector<TH1F*>> pp_td;		///< Vector of vector of 1D histograms with p-side time differences
-	std::vector<std::vector<TH1F*>> nn_td;		///< Vector of vector of 1D histograms with n-side time differences
-    std::vector<std::vector<TH2F*>> pn_td_Ep;	///< Vector of vector of 2D histograms pn-time difference vs p-side energy
-    std::vector<std::vector<TH2F*>> pn_td_En;	///< Vector of vector of 2D histograms pn-time difference vs n-side energy
+    std::vector<std::vector<TH1F*>> pn_td_all;      ///< Vector of vector of 1D histograms with p vs n side time difference
+    std::vector<std::vector<TH1F*>> nn_td;		///< Vector of vector of 1D histograms with n-side time differences
+    std::vector<std::vector<TH2F*>> pn_td_Ep;	///< Vector of vector of 2D histograms pn-time difference vs p-side energy, prompt
+    std::vector<std::vector<TH2F*>> pn_td_En;	///< Vector of vector of 2D histograms pn-time difference vs n-side energy, prompt
+    std::vector<std::vector<TH2F*>> pn_td_Ep_all;   ///< Vector of vector of 2D histograms pn-time difference vs p-side energy, not tw corrected
+    std::vector<std::vector<TH2F*>> pn_td_En_all;   ///< Vector of vector of 2D histograms pn-time difference vs n-side energy
 	std::vector<std::vector<TH2F*>> pn_mult;	///< Vector of vector of 2D histograms p-side vs n-side multiplicity
 	
 	std::vector<std::vector<TH1F*>> pn_td_prompt; ///< Vector of vector of 1D histograms with p vs n side time difference (prompt coincidence imposed)
